@@ -1,0 +1,51 @@
+.TodoListMain .header input{
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #FFF;
+    width: 165px; 
+}
+
+.TodoListMain .header button{
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+    margin-right: 0px;
+    background-color: #0066ff;
+    color: #FFF;
+    border: 2px solid #0066FF;
+}
+
+.TodoListMain .header .submit button:hover{
+    background-color: #003399;
+    border: 2px solid #003399;
+    cursor: pointer;
+}
+
+.TodoListMain .theList form{
+    color: #333333;
+    background-color: rgba(255, 255, 255, .5);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: background-color .2s ease-out;
+}
+
+.TodoListMain .theList form:hover{
+    background: #FF416C;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #FF4B2B, #FF416C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    cursor: pointer;
+}
+
+.TodoListMain .theList form:hover > .title {
+text-decoration: line-through;
+}
+
+ul.theList{
+    padding: 0;
+}
