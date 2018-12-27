@@ -7,8 +7,8 @@ class TodoList extends Component {
         super(props);
 
         this.state={
-            items:[]
-            // isEditing:false
+            items:[],
+            isLogin:false
         };
 
         this.addItem = this.addItem.bind(this);
@@ -16,6 +16,37 @@ class TodoList extends Component {
         this.editItem = this.editItem.bind(this);  
     }
 
+    loginFunc(e, username, password){
+        e.preventDefault();
+        console.log("loginFunc invoked")
+        console.log("username: ", username)
+        console.log("password: ", password)
+        if(username === 'aldi' && password === 'aldi')
+            this.setState({
+                isLogin:true
+            });
+
+            console.log("isLogin: ", this.state.isLogin)
+    }
+
+    renderLogin(){
+        let username ='';
+        let password ='';
+        return(
+            <div>
+                <form>
+                    <input onChange={(t) => username = t.target.value} 
+                        placeholder="Username">
+                    </input>
+                    <input onChange={(t) => password = t.target.value} 
+                        placeholder="Password">
+                    </input>
+                    <button onClick={e => this.loginFunc(e, username, password)}>Login</button>
+                </form>
+            </div> 
+        );
+    }
+    
     addItem(e){
         let array_Terakhir = this.state.items[0].id 
         // console.log("terakhir", array_Terakhir);
@@ -74,27 +105,36 @@ class TodoList extends Component {
         this.ambilData()
     }
 
-    render (){
-        const {isEditing} = this.state;
+    renderTodo() {
         return(
             <div className="TodoListMain">
-                <div className="header">
-                    <form onSubmit={this.addItem}>
-                        <input ref={(a) => this._inputElement = a} 
-                            placeholder="Enter Task">
-                        </input>
-                        <button className="submit" type="submit">add</button>
-                    </form> 
+                    <div className="header">
+                        <div onSubmit={this.addItem}>
+                            <input ref={(a) => this._inputElement = a} 
+                                placeholder="Enter Task">
+                            </input>
+                            <button className="submit" type="submit" >add</button>
+                        </div> 
+                    </div>
+                    <div className="header">
+                        <form>
+                            <TodoItems entries={this.state.items}
+                                delete={this.deleteItem}
+                                edit={this.editItem}  
+                            />
+                        </form>
+                    </div>
                 </div>
-                <div className="header">
-                    <form>
-                        <TodoItems entries={this.state.items}
-                            delete={this.deleteItem}
-                            edit={this.editItem}  
-                        />
-                    </form>
-                </div>
+        )
+    }
+    render (){
+        const {isEditing} = this.state;
+        return( 
+            <div>
+                { this.state.isLogin ? this.renderTodo() : this.renderLogin() }
+                {console.log(this.state.isLogin)}
             </div>
+                
         );
     }
 }
