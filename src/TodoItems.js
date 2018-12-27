@@ -16,11 +16,14 @@ class TodoItems extends Component{
     }
 
     createTasks(item){
-        return <form onClick ={() => this.delete(item.id)}
+        return(<div className="coba">
+            <form onClick ={() => this.delete(item.id)}
             key={item.id}> 
             <p className="title">{item.title}</p> 
-            <button onClick={(id)=> this.editItem(item.id)} > Edit </button> 
+            {/* <button onClick={(e)=> this.editItem(e, item.id)} > Edit </button>  */}
             </form>
+            <button className="tombol" onClick={(e)=> this.editItem(e, item.id)} > Edit </button>
+        </div>) 
     }
 
     delete(id){
@@ -47,12 +50,23 @@ class TodoItems extends Component{
         )
     }
     
-    editItem(id){
-        const{isEditing} = this.state;
-        this.setState({
-            isEditing:!isEditing
-        })
-    }
+    editItem(e, id){
+        const {isEditing} = this.state;
+        if (isEditing){
+          return(
+            <form onSubmit={(e) => this.setState({isEditing: false})}>
+              <input
+                  type="text"
+                  value={this.props.value}
+                  onChange={(e)=>this.props.handleChangeText(e)
+                  }
+              />
+            </form>
+          );}
+        e.preventDefault();
+      }
+    //     })
+    // }
 
     componentDidMount(){
         // console.log("props", this.props)

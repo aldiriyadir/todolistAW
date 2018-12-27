@@ -15,7 +15,7 @@
     border: 2px solid #0066FF;
 }
 
-.TodoListMain .header .submit button:hover{
+.TodoListMain .header button:hover{
     background-color: #003399;
     border: 2px solid #003399;
     cursor: pointer;
@@ -46,6 +46,50 @@
 text-decoration: line-through;
 }
 
+.coba{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.TodoListMain .header .tombol button{
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
 ul.theList{
     padding: 0;
+}
+
+.login{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.login .pencet{
+    background: #d3cce3; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #d3cce3, #e9e4f0); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #d3cce3, #e9e4f0);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login .pencet:hover{
+    background: #667db6; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #667db6, #0082c8, #0082c8, #667db6); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #667db6, #0082c8, #0082c8, #667db6);
+}
+
+.login .input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }

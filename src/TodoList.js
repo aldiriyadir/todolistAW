@@ -33,15 +33,17 @@ class TodoList extends Component {
         let username ='';
         let password ='';
         return(
-            <div>
+            <div className="login">
                 <form>
-                    <input onChange={(t) => username = t.target.value} 
+                    <label className="label"> Username </label>
+                    <input className="input" onChange={(t) => username = t.target.value} 
                         placeholder="Username">
                     </input>
-                    <input onChange={(t) => password = t.target.value} 
+                    <label className="label"> Pasword </label>
+                    <input className="input" onChange={(t) => password = t.target.value} 
                         placeholder="Password">
                     </input>
-                    <button onClick={e => this.loginFunc(e, username, password)}>Login</button>
+                    <button className="pencet" onClick={e => this.loginFunc(e, username, password)}>Login</button>
                 </form>
             </div> 
         );
@@ -84,7 +86,7 @@ class TodoList extends Component {
         });
     }
 
-    editItem(id){
+    editItem(e, id){
         var filteredItems = this.state.items.filter(function(item){
             return(item.id !== id)
         });
@@ -109,18 +111,18 @@ class TodoList extends Component {
         return(
             <div className="TodoListMain">
                     <div className="header">
-                        <div onSubmit={this.addItem}>
+                        <form onSubmit={this.addItem}>
                             <input ref={(a) => this._inputElement = a} 
                                 placeholder="Enter Task">
                             </input>
                             <button className="submit" type="submit" >add</button>
-                        </div> 
+                        </form> 
                     </div>
                     <div className="header">
                         <form>
                             <TodoItems entries={this.state.items}
                                 delete={this.deleteItem}
-                                edit={this.editItem}  
+                                edit={this.editItem()}  
                             />
                         </form>
                     </div>
@@ -134,7 +136,6 @@ class TodoList extends Component {
                 { this.state.isLogin ? this.renderTodo() : this.renderLogin() }
                 {console.log(this.state.isLogin)}
             </div>
-                
         );
     }
 }
